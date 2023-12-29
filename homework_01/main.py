@@ -27,7 +27,7 @@ def is_prime(num: int) -> bool:
         return False
 
     for i in range(2, num // 2 + 1):
-        if num % i == 0:
+        if not num % i:
             return False
 
     return True
@@ -46,9 +46,9 @@ def filter_numbers(nums: List[int], filter_type: str) -> List[int]:
     """
     res = []
     if filter_type == EVEN:
-        res = list(filter(lambda x: x % 2 == 0, nums))
+        res = list(filter(lambda x: not x % 2, nums))
     if filter_type == ODD:
-        res = list(filter(lambda x: x % 2 != 0, nums))
+        res = list(filter(lambda x: x % 2, nums))
     if filter_type == PRIME:
         res = list(filter(lambda x: is_prime(x), nums))
 
